@@ -1,5 +1,5 @@
 const express = require("express")
-
+const path = require("path")
 const app = express()
 
 app.get("/",(req, res)=>{
@@ -7,7 +7,7 @@ app.get("/",(req, res)=>{
 })
 
 app.use((req, res)=>{
-    res.status(404).send("Page not found")
+    res.status(404).sendFile(path.join(__dirname,"404page.html"))
 })
 
 app.listen(8080, ()=>console.log("*** Server successfully running on PORT 8080 ***"))
